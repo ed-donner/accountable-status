@@ -27,3 +27,16 @@ aidlc/diagnostics/
 .aidlc/base-source-listing.tsv
 .claude/settings.local.json
 # END AI-DLC:gitignore
+
+# Accountable Status
+node_modules/
+.venv/
+__pycache__/
+.pytest_cache/
+data/
+*.db
+*.db-wal
+*.db-shm
+test-results/
+playwright-report/
+frontend/dist/
