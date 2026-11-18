@@ -15,10 +15,12 @@ Testing will cover unit tests for the frontend with Vitest, unit tests for the b
 
 Status runs its page on port 5190 and its backend on port 8790, so it doesn't clash with Accountable.
 
+Start any server you need, this app's own included, as a background task, and stop it by stopping that task. Never start a server with `&` in a shell command.
+
 ## Accountable
 
-Accountable is the CRM this status page watches. Its code is in ~/projects/accountable. Read it there; never copy it into this repo or change any file in it.
+Accountable is the CRM this status page watches. Its code is in the `accountable` folder beside this repo (`../accountable`). Read it there; never copy it into this repo or change any file in it.
 
-- **Start it** by running `npm run dev` in ~/projects/accountable as a background task. The first run can take a minute while it sets itself up. It's ready when it prints "Accountable is running at http://localhost:5173". If it says a port is in use, Accountable is probably running already, so check it instead of starting another.
+- **Start it** by running `npm run dev` in `../accountable` as a background task. The first run can take a minute while it sets itself up. It's ready when it prints "Accountable is running at http://localhost:5173". If it says a port is in use, Accountable is probably running already, so check it instead of starting another.
 - **It's up** when both its page, http://localhost:5173, and its API, http://localhost:8765/api/meta, answer. The API answers 401 because nobody is signed in, and that still means it's up.
 - **Stop it** by stopping the background task you started it with. Only ever stop processes you started yourself, and never stop a process by its name or port.
