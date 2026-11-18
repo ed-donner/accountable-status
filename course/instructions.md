@@ -15,12 +15,18 @@ This repo starts with two files:
 
 ## 1. Get this repo beside Accountable
 
-In a terminal in your `accountable` folder:
+Clone this repo into your projects folder, the one that holds your `accountable` folder, so the two sit side by side. Status reads Accountable's code from `../accountable`. From a terminal in your `accountable` folder, `cd ..` takes you up to your projects folder:
 
 ```
 cd ..
 git clone https://github.com/ed-donner/accountable-status.git
 cd accountable-status
+```
+
+If you'd rather skip the build, my finished version is on the `complete` branch, with AI-DLC's records of the run. Check it out and go straight to step 8:
+
+```
+git checkout complete
 ```
 
 ## 2. Install AI-DLC
@@ -51,10 +57,20 @@ This prints `aidlc 2.11.4 (runtime 2.11.4)` or a later version.
 
 ```
 aidlc config --harness claude
+```
+
+It asks two questions along the way:
+
+- For "MCP servers", choose off, the default. It offers a documentation service and four AWS servers, and Status needs none of them.
+- For "Fix the 2 sections that need you now?", answer n. The two sections are Models and Providers. With Models left alone, every agent uses the model and effort you start Claude Code with in step 5. Providers holds settings for running the models on Amazon Bedrock, which you don't need here.
+
+`aidlc config` adds about 400 files: AI-DLC's skills, agents and hooks in `.claude/`, and its records in `aidlc/`. Then check the setup:
+
+```
 aidlc doctor
 ```
 
-`aidlc config` adds about 400 files: AI-DLC's skills, agents and hooks in `.claude/`, and its records in `aidlc/`. `aidlc doctor` should report 0 problems. Its warnings are advice, and you can ignore them. Commit what it added:
+It should report 0 problems. Its warnings are advice, and you can ignore them. Commit what `aidlc config` added:
 
 ```
 git add -A
